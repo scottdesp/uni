@@ -1,0 +1,114 @@
+
+/**
+ * Write a description of class Team here.
+ * 
+ * @author SJ 
+ * @version 0.1
+ */
+public class Team
+{
+    // Instance variables
+    private String teamName;
+    private int gamesPlayed;
+    private int gamesWon;
+    private int gamesLost;
+    private int gamesDrawn;
+    private int pointsScored;
+    private int pointsConceded;
+    private int leaguePoints;
+
+    // Class constructor
+    public Team(String team)
+    {
+        teamName = team;
+        gamesPlayed = 0;
+        gamesWon = 0;
+        gamesLost = 0;
+        gamesDrawn = 0; 
+        pointsScored = 0;
+        pointsConceded = 0;
+    }
+    
+    public int getPlayed()
+    {
+        return gamesPlayed; 
+    }
+    public int getWon()
+    {
+        return gamesWon; 
+    }
+    
+    public int getLost()
+    {
+        return gamesLost; 
+    }
+    
+    public int getDrawn()
+    {
+        return gamesDrawn; 
+    }
+    
+    public int getScored()
+    {
+        return pointsScored; 
+    }
+    
+    public int getConceded()
+    {
+        return pointsConceded;
+    }
+    
+    public int getDiff()
+    {
+        return pointsScored - pointsConceded;
+    }
+    
+    public void setName(String teamName) //mutator for account holder
+    {
+        this.teamName = teamName;
+    }
+    
+    public void matchResults(int pointsScored, int pointsConceded)
+    {
+        this.pointsScored = pointsScored;
+        this.pointsConceded = pointsConceded;
+        
+        if (pointsScored > pointsConceded)
+            {
+                gamesWon++;
+                gamesPlayed++;
+                leaguePoints = leaguePoints + 2;
+            }
+        else if (pointsScored < pointsConceded)
+            {
+                gamesLost++;
+                gamesPlayed++;
+            }
+        else 
+            {
+                gamesDrawn++;
+                gamesPlayed++;
+                leaguePoints = leaguePoints + 1;
+            }
+    }
+    
+    public void getStats()
+    {
+        System.out.println ("Games Won:" + gamesWon);
+        System.out.println ("Games Lost:" + gamesLost);
+        System.out.println ("Games Drawn:" + gamesDrawn);
+        System.out.println ("Points Scored:" + pointsScored);
+        System.out.println ("Points Conceded:" + pointsConceded);
+        System.out.println ("Points Difference:" + (pointsScored - pointsConceded));
+        
+    }
+    
+    public int getLeaguePoints()
+    {
+    return leaguePoints;
+    }
+    
+
+    
+    
+}
