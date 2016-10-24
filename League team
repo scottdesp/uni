@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Team here.
+ * This class contains information about a team, which can display statistics about matches and league points.
  * 
  * @author SJ 
  * @version 0.1
@@ -9,19 +9,15 @@ public class Team
 {
     // Instance variables
     private String teamName;
-    private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
     private int gamesDrawn;
     private int pointsScored;
     private int pointsConceded;
-    private int leaguePoints;
-
-    // Class constructor
-    public Team(String team)
+    
+    public Team(String team) // Class constructor
     {
         teamName = team;
-        gamesPlayed = 0;
         gamesWon = 0;
         gamesLost = 0;
         gamesDrawn = 0; 
@@ -29,46 +25,47 @@ public class Team
         pointsConceded = 0;
     }
     
-    public int getPlayed()
+    public int getPlayed() //method which returns the amount of games played.
     {
-        return gamesPlayed; 
+        return gamesWon + gamesLost + gamesDrawn;
     }
-    public int getWon()
+    
+    public int getWon() //method which returns the amount of games won.
     {
         return gamesWon; 
     }
     
-    public int getLost()
+    public int getLost() //method which returns the amount of games lost. 
     {
         return gamesLost; 
     }
     
-    public int getDrawn()
+    public int getDrawn() //method which returns the amount of games drawn. 
     {
         return gamesDrawn; 
     }
     
-    public int getScored()
+    public int getScored() //method which returns the amount of points scored. 
     {
         return pointsScored; 
     }
     
-    public int getConceded()
+    public int getConceded() //method which returns the amount of points conceded. 
     {
         return pointsConceded;
     }
     
-    public int getDiff()
+    public int getDiff() //method which returns the difference between points scored and conceded. 
     {
         return pointsScored - pointsConceded;
     }
     
-    public void setName(String teamName) //mutator for account holder
+    public void setName(String teamName) //method which changes the team name. 
     {
         this.teamName = teamName;
     }
     
-    public void matchResults(int pointsScored, int pointsConceded)
+    public void matchResults(int pointsScored, int pointsConceded) //method which updates the number of points scored and conceded after a match. 
     {
         this.pointsScored = pointsScored;
         this.pointsConceded = pointsConceded;
@@ -76,39 +73,34 @@ public class Team
         if (pointsScored > pointsConceded)
             {
                 gamesWon++;
-                gamesPlayed++;
-                leaguePoints = leaguePoints + 2;
             }
         else if (pointsScored < pointsConceded)
             {
                 gamesLost++;
-                gamesPlayed++;
             }
         else 
             {
                 gamesDrawn++;
-                gamesPlayed++;
-                leaguePoints = leaguePoints + 1;
             }
     }
     
-    public void getStats()
+    public void getStats() //prints out statistics of games won, lost or drawn, amount of points scored and conceded, as well as league points. 
     {
         System.out.println ("Games Won:" + gamesWon);
         System.out.println ("Games Lost:" + gamesLost);
         System.out.println ("Games Drawn:" + gamesDrawn);
+        System.out.println ("Games Played:" + (gamesWon + gamesLost + gamesDrawn));
         System.out.println ("Points Scored:" + pointsScored);
         System.out.println ("Points Conceded:" + pointsConceded);
         System.out.println ("Points Difference:" + (pointsScored - pointsConceded));
+        System.out.println ("League Points:" + (gamesWon * 2) + gamesDrawn);
         
     }
     
-    public int getLeaguePoints()
+    public int getLeaguePoints() //method which returns the amount of league points. 
     {
-    return leaguePoints;
+        return (gamesWon * 2) + gamesDrawn;
     }
     
-
-    
-    
 }
+
