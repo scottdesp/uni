@@ -1,0 +1,73 @@
+
+/**
+ * Write a description of class Account here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Account
+{
+    // instance variables - replace the example below with your own
+    private String accNumber;
+    private String accHolder;
+    private float currBal;
+    private boolean overDraft;
+
+    public Account(String saccNumber, String saccHolder, boolean overDraft) //constructor for the class
+    {
+        accNumber = saccNumber;
+        accHolder = saccHolder;
+        currBal = 0;
+        overDraft = true;
+    }
+
+    public String getNumber() //accessor for account number
+    {
+        return accNumber;
+    }
+    
+    public String getHolder() //accessor for account holder
+    {
+        return accHolder;
+    }
+    
+    public float getBal() //accessor for current balance
+    {
+        return currBal;
+    }
+    
+    public boolean getDraft() //accessor for overdraft eligible
+    {
+        return overDraft;
+    }
+    
+    public void setNumber(String accNumber)//mutator for account number
+    {
+        this.accNumber = accNumber;
+    }
+    
+    public void setHolder(String accHolder) //mutator for account holder
+    {
+    }
+    
+    public void setDraft(boolean overDraft)//mutator for overdraft
+    {
+        this.overDraft = overDraft;
+    }
+    
+    public void deposit(float depositQty) //mutator for depositing an amount into the currBal field
+    {
+        currBal = currBal + depositQty;     
+    }
+    
+    public void withdraw(float depositQty) //mutator for withdrawing an amount, checking if overdraft is allowed. 
+    {
+       if ((currBal >0) || ((currBal <=0) && (overDraft == true))) {
+            currBal = currBal - depositQty;
+        }
+       else {
+           return false;
+        }
+    }
+}
+
